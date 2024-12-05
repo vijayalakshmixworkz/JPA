@@ -1,0 +1,625 @@
+1. Explain polymorphism and types with examples, upcasting , downcasting
+
+	Polymorphism is a feature of java.
+	it refers to the process that one object posses different behaviour in different situations.
+	poly- many
+	morphism- roles
+	
+	
+	Types of polymorphism:
+	- run time polymorphism
+	- compile time polymorphism
+	they can also be termed as method overloading and method overriding.
+	Method overriding:
+	 methods having same name but different logic .
+	 EX: 
+	 Public class vehicle{
+	 public  double findCost(){
+	 System.out.println("cost of vehicle");
+	 return 1234556;
+	 }
+	 }
+	 
+	 
+	 public class bike inherits Vehicle{
+	 public  double findCost(){
+	 System.out.println("cost of bike");
+	 return 76798;
+	 }
+	 
+	 public class Car inherits Vehicle{
+	 public  double findCost(){
+	 System.out.println("cost of Car");
+	 return 976776798;
+	 }
+	 
+	 public class runner
+	 {
+	 public static void main(String args)
+	 {
+	 Bike.findCost();
+	 Car.findCost();
+	 }
+	 }
+	 
+	 
+	 
+	 - METHOD OVERLOADING:
+	 method overloading refers to methods having same name but different parameters
+
+ex-
+
+Public class Over{
+public void getNumbers(int num)
+{
+System.out.println(" get int number");
+}
+public void getNumbers(int num, String name)
+{
+System.out.println(" get numb using name")
+}
+public void getNumbers(String name, Long phoneNumber)
+{
+System.out.println(" get phone number using name");
+}
+}
+
+
+
+2. what is a constructor, types of constructor, constructor chaining.
+	 -constructor is a special type of method.
+	 - it have the same name as class name.
+	 - it does not have a return type.
+	 - it allocates memory.
+	 - it validates the data
+	 - it initializes the objects.
+	 
+	 
+	  TYPES OF CONSTRUCTOR:
+	  1. Default Constructor
+	  2. Constructor with arguments
+	  3.  Copy constructor
+	  
+	  1. Default Constructor:
+	  - also called as no argument constructor 
+		-A constructor with no parameters.
+		-If no constructor is defined in a class, the compiler provides a default constructor.
+Ex:
+class Trainer {
+    int id;
+    String name;
+
+    Trainer() {
+        id = 0;
+        name = "Unknown";
+    }
+}
+	  2. Constructor with arguments
+	  - it has one or more arguments
+	  Parameterized Constructor:
+	A constructor that takes arguments to initialize the object with specific values.
+
+class Trainer {
+    int id;
+    String name;
+
+    Trainer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+3.  Copy Constructor:
+
+A constructor that creates a new object as a copy of an existing object.
+
+class Trainer {
+    int id;
+    String name;
+
+    // Copy Constructor
+    Trainer(Trainer t) {
+        this.id = t.id;
+        this.name = t.name;
+    }
+}
+
+=====>
+Constructor Chaining
+Constructor chaining is the process of calling one constructor from another within the same class or from the parent class using this() or super().
+
+Within the Same Class:
+
+Using this() to call another constructor in the same class.
+Ex:
+class Trainer {
+    int id;
+    String name;
+
+    // Constructor 1
+    Trainer() {
+        this(1, "Default Name"); // Calls Constructor 2
+    }
+
+    // Constructor 2
+    Trainer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+
+In other  Classes:
+
+Using super() to call a constructor of the parent class.
+
+class Person {
+    String address;
+
+    Person(String address) {
+        this.address = address;
+    }
+}
+
+class Trainer extends Person{
+	Trainer ()
+	{
+		super.address()
+	}
+}
+
+
+
+	  
+3. explain the role of access modifiers. provide examples.
+-access modifiers in programming definr the visibility and access of  level of classes, methods, variables, or other members of a program.
+-helps encapsulation
+-hey prevent misuse of data and promote a clear structure.
+there are 4 access modifiers
+	1. public 
+	2. private
+	3. protected 
+	4. default(packaged)
+	
+	1. public:
+	-Accessible from anywhere in the program.
+	-these classes can be accesed by other classes.
+	-used for methods or variables meant to be openly accessed.
+	ex:
+	public class classname{}// public class
+	public void methodName()// public method
+	public String variable; // public variable
+	2. private : 
+	                Accessible only within the same class.
+                    Used for internal details of a class that need to be secured.
+	3. protected:
+	accessible within the same class and its subclasses.
+	useful within inheritance.
+	
+		
+	4. packaged:
+       
+		Default 
+		no modifier,
+		package-private in Java
+		Accessible only within the same package 
+        grouping related classes in the same package.
+
+class Person {
+    public String name;         
+    private int age;          
+    protected String city;      
+    String country;             
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+}
+
+class Employee extends Person {
+    public void displayDetails() {
+        System.out.println("Name: " + name);  
+        System.out.println("City: " + city);  
+    }
+}
+
+public class MainRunner {
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.name = "Rahul";  
+        person.setAge(25);      
+        System.out.println(person.getAge());
+	}
+	
+		
+		
+		
+		
+4. write a java program that handles the following exception
+	arrayindexoutofboundexception
+	arithmetic exception
+	nullpointerexception
+	numberFormatexception
+	
+public class Demo {
+
+    public static void main(String[] args) {
+
+        //  ArrayIndexOutOfBoundsException
+        try {
+            int[] array = {1, 2, 3};
+            System.out.println(" index 5  " + array[5]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException ");
+        }
+
+        // ArithmeticException
+        try {
+            System.out.print("Enter a number to divide 100: ");
+            int number = scanner.nextInt();
+            System.out.println("res " + (100 / number));
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero is not allowed.");
+        }
+
+        //  NullPointerException
+        try {
+            String name = null;
+            System.out.println("Length =: " +name.length());
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException");
+        }
+
+        // Handling NumberFormatException
+        try {
+            System.out.print("Enter a number");
+            String input = scanner.next();
+            int parsedNumber = Integer.parseInt(input);
+            System.out.println("Parsed number: " + parsedNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException");
+        }
+
+    }
+}
+
+
+
+
+	
+5. create two custom exceptions and use try,catch,throw, throws to catch the custom exception.
+
+	-these are user-defined exceptions that extend the Exception class or the RuntimeException class.
+	-used to represent application specific errors 
+    - it 	makes the code more readable and maintainable by encapsulating error-handling logic.
+
+
+	Create a new class that extends Exception  checked exceptions  or unchecked exceptions
+	Define constructors to initialize the exception.
+	
+ class InvalidAge extends Exception {
+    public InvalidAge(String message) {
+    }
+}
+
+class InvalidName extends Exception {
+    public InvalidName(String message) {
+    }
+}
+
+public class CustomExceptionExample {
+
+    public static void validateUser(String name, int age) throws InvalidName, InvalidAge {
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidName("Name cannot empty.");
+        }
+        if (age < 18 || age > 60) {
+            throw new InvalidAge("Age must be between 18 and 60.");
+        }
+        System.out.println("  age and name is valid.");
+    }
+
+    public static void main(String[] args) {
+        try {
+            validateUser("viji", 22);
+            
+            validateUser("", 30);
+            
+            validateUser("sapna", 15);
+        } catch (InvalidName e) {
+            System.out.println("InvalidNameException " + e.getMessage());
+        } catch (InvalidAge e) {
+            System.out.println("InvalidAgeException " + e.getMessage());
+        }
+    }
+}
+
+
+
+
+
+
+6. write a java program that demonstrates the following operations using an ArrayList:-
+add Dto to the list
+remove a dto from the list
+use streams to perform to sort your dto in order
+check if the list contain a specific element
+
+
+
+
+7.List the difference between array list and linked list
+Uses a dynamic array to store elements
+   1.ArrayList:
+   it contains homogeneous elements( of same data type)
+   - inserting values in the middle of arraylist is slow.
+   - easily access values of the list
+   -values cannot be empty 
+  - duplicates values can be stored 
+   - only one  null value is present
+   -Uses a dynamic array to store elements
+
+
+  2. Linked List
+  - can easily insert values in the middle of list
+  - many null values can be present.
+  - duplicates values cannot be stored 
+  - removing elements from the middle
+-faster for accessing elements 
+
+  =====>difference between list and set
+  
+  LIST :
+  -ordered collection
+  - allows duplicate elements
+  - elements are stored in the sequence 
+  - can be accessed via an index. 
+  
+  SET:
+ -an unordered collection
+- does not allow duplicate elements
+ - each element is unique. 
+
+
+ 
+ 
+ 
+ 
+8. The toString(), hashCode(), and equals() methods 
+- important methods in Java
+-  inherited from the Object class. 
+1. toString()
+The toString() method returns a string representation of an object.
+ - it returns the class name followed by the "@" symbol and the object's hashcode in hexadecimal.
+
+class Parrot {
+    String name;
+    int age;
+
+    Parrot(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Parrot[name=" + name + ", age=" + age + "]";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parrot p = new Parrot("John", 25);
+        System.out.println(p.toString());
+    }
+}
+
+2. hashCode()
+The hashCode() method returns a unique integer value for an object,
+ which is used in hash-based collections like HashMap and HashSet. 
+-it returns a hash code based on the memory address of the object.
+
+class Parrot {
+    String name;
+    int age;
+
+    Parrot(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+   
+    public int hashCode() {
+        return name.hashCode() + age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parrot p1 = new Parrot("John", 25);
+        Parrot p2 = new Parrot("John", 25);
+
+        System.out.println(p1.hashCode());
+        System.out.println(p2.hashCode());
+    }
+}
+
+
+3. equals()
+-The equals() method checks if two objects are equal.
+- it compares the memory addresses of two objects 
+
+class Parrot {
+    String name;
+    int age;
+
+    Parrot(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+  
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Parrot Parrot = (Parrot) obj;
+        return age == Parrot.age && name.equals(Parrot.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parrot p1 = new Parrot("vijji", 25);
+        Parrot p2 = new Parrot("sapna", 25);
+        Parrot p3 = new Parrot("sanju", 30);
+
+        System.out.println(p1.equals(p2)); 
+        System.out.println(p1.equals(p3)); 
+    }
+}
+
+
+
+
+
+9. perform CRUD where data should flow from servlet to mysql DB (use JDBC/ JPA/ hibernate) 
+ choose any one custom type DTO given below there should be atleast 5 properties ( songs , cars, mobiles, apps)?
+ 
+ JPA:
+ DTO:
+ 
+ 
+ package com.xworkz.story.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="story_info")
+public class SongsDTO {
+	@Id
+	private int id; ;
+	private String title;;
+	private String author_name ;
+	private String  genre ;
+    private int rating;
+    private int views ;
+    
+    public void SongsDTO() {
+    	System.out.println("songs DTo connected");
+    }
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getAuthor_name() {
+		return author_name;
+	}
+	public void setAuthor_name(String author_name) {
+		this.author_name = author_name;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	public String getPublication_date() {
+		return publication_date;
+	}
+
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+
+}
+
+
+RUNNER
+
+CREATE OPERATION:
+
+package com.xworkz.story.runner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.xworkz.story.dto.SongsDTO;
+
+public class SongsRunner{
+public static void main(String[] args) {
+	EntityManagerFactory eMF=Persistence.createEntityManagerFactory("xworkz");
+	EntityManager eM=eMF.createEntityManager();
+	EntityTransaction eT= eM.getTransaction();
+	try {
+		eT.begin();
+		SongsDTO dto=new SongsDTO();
+		dto.setId(1);
+		dto.setTitle("maayavi");
+		dto.setAuthor_name("sanchith hegde");
+		dto.setGenre("love");		
+		dto.setViews(40000);
+		eM.merge(dto);
+		eT.commit();
+
+	}catch(Exception e) 
+	{
+		e.printStackTrace();
+		
+	}
+	finally {
+		eM.close();
+		eMF.close();
+	}
+	}
+}
+
+READ OPERATION:
+
+
+
+public class SongRunner2 {
+	public static void main(String[] args) {
+		EntityManagerFactory eMF = Persistence.createEntityManagerFactory("xworkz");
+		EntityManager eM = eMF.createEntityManager();
+		EntityTransaction eT = eM.getTransaction();
+ Integer id=1;
+	SongsDTO song = eM.find(SongsDTO.class, id);
+System.out.println("song name="+song.getMaterial());
+		try {
+			eT.begin();
+			
+			eM.persist(song);
+			eT.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			eM.close();
+			eMF.close();
+		}
+
+	}
+}
+
