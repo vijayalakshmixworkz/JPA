@@ -24,7 +24,9 @@ public class ArtGalleryInsertRunner {
 		EntityTransaction eT = eM.getTransaction();
 
 		List<ArtGalleryEntity> artGallery = new ArrayList<>();
-		artGallery.add(new ArtGalleryEntity("The Serene Landscape", "Ravi Kumar", "Ananya Gupta", LocalDate.of(2024, 12, 1),LocalDateTime.of(2024, 12, 1, 14, 30), 150000.75f, 1500000L, true, "ART001"));
+		artGallery.add(
+				new ArtGalleryEntity("The Serene Landscape", "Ravi Kumar", "Ananya Gupta", LocalDate.of(2024, 12, 1),
+						LocalDateTime.of(2024, 12, 1, 14, 30), 150000.75f, 1500000L, true, "ART001"));
 		artGallery.add(new ArtGalleryEntity("Eternal Beauty", "Meera Singh", "Rajesh Patel", LocalDate.of(2024, 11, 10),
 				LocalDateTime.of(2024, 11, 10, 10, 0), 200000.50f, 2000000L, true, "ART002"));
 		artGallery.add(
